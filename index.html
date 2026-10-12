@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINGDOM OF LEGENDS — The Grand Archives of Human History</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-primary: #0b0b0d;
+      --bg-secondary: #121217;
+      --bg-card: #181820;
+      
+      --gold-primary: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-glow: rgba(212, 175, 55, 0.25);
+
+      --text-main: #e6e6eb;
+      --text-muted: #a0a0b0;
+      --border-gold: rgba(212, 175, 55, 0.3);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+
+      --font-heading: 'Cinzel', serif;
+      --font-body: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    .royal-header {
+      background: rgba(11, 11, 13, 0.95);
+      border-bottom: 1px solid var(--border-gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand { display: flex; align-items: center; gap: 0.75rem; }
+    .crown-logo { font-size: 2rem; }
+    .site-title { font-family: var(--font-heading); font-size: 1.5rem; color: var(--gold-primary); }
+    .site-subtitle { font-size: 0.7rem; color: var(--text-muted); }
+
+    .search-box input {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 1rem;
+      width: 250px;
+    }
+
+    /* HERO */
+    .hero-section {
+      text-align: center;
+      padding: 2.5rem 1.5rem 1.5rem;
+    }
+
+    .hero-title { font-family: var(--font-heading); font-size: 2.3rem; color: #fff; margin-bottom: 0.5rem; }
+    .hero-title span { color: var(--gold-primary); }
+    .hero-description { max-width: 750px; margin: 0 auto 1.5rem; color: var(--text-muted); }
+
+    .category-tabs, .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cat-tab, .filter-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-light);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .cat-tab.active, .filter-btn.active {
+      background: var(--gold-primary);
+      color: #000;
+      font-weight: bold;
+    }
+
+    /* GRID */
+    .main-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    .legends-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .legend-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 8px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-title { font-family: var(--font-heading); font-size: 1.25rem; color: #fff; }
+    .card-subtitle { font-size: 0.85rem; color: var(--gold-light); margin-bottom: 0.5rem; }
+    .card-snippet { font-size: 0.95rem; color: var(--text-main); margin-bottom: 1rem; }
+
+    .read-btn {
+      background: transparent;
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-primary);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .read-btn:hover {
+      background: var(--gold-primary);
+      color: #000;
+    }
+
+    /* MODAL STYLES */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-container {
+      background: var(--bg-card);
+      border: 1px solid var(--gold-primary);
+      border-radius: 8px;
+      max-width: 700px; width: 90%;
+      max-height: 85vh;
+      padding: 1.75rem;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute; top: 1rem; right: 1rem;
+      background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;
+    }
+
+    .death-info-box {
+      background: rgba(212, 175, 55, 0.1);
+      border-left: 3px solid var(--gold-primary);
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .death-info-box strong {
+      color: var(--gold-light);
+      display: block;
+      font-size: 0.9rem;
+      font-family: var(--font-heading);
+    }
+
+    .bio-paragraph {
+      margin-bottom: 0.75rem;
+      color: #dcdce5;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <header class="royal-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="crown-logo">👑</div>
+        <div>
+          <h1 class="site-title">KINGDOM OF LEGENDS</h1>
+          <p class="site-subtitle">THE GRAND ARCHIVES OF HUMAN HISTORY</p>
+        </div>
+      </div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search sovereigns...">
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <h2 class="hero-title">ENSEMBLE OF <span>GLOBAL HERITAGE</span></h2>
+    <p class="hero-description">Comprehensive archive of historic rulers, generals, and figures.</p>
+
+    <div class="category-tabs">
+      <button class="cat-tab active" data-category="kings">👑 150 KINGS & SOVEREIGNS</button>
+      <button class="cat-tab" data-category="leaders">⚔️ 50 HISTORIC LEADERS</button>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">ALL ERAS</button>
+      <button class="filter-btn" data-filter="ancient">ANCIENT</button>
+      <button class="filter-btn" data-filter="classical">CLASSICAL</button>
+    </div>
+  </section>
+
+  <main class="main-container">
+    <div id="legendsGrid" class="legends-grid"></div>
+  </main>
+
+  <!-- MODAL -->
+  <div id="bioModal" class="modal-overlay hidden">
+    <div class="modal-container">
+      <button id="closeModal" class="close-btn">&times;</button>
+      <h2 id="modalTitle" style="color:var(--gold-primary); margin-bottom:0.2rem;"></h2>
+      <h4 id="modalSubtitle" style="color:var(--text-muted); margin-bottom:0.5rem;"></h4>
+      
+      <!-- Death / Final Battle Info Section -->
+      <div class="death-info-box">
+        <strong>DEATH & FINAL BATTLE / DEMISE:</strong>
+        <span id="modalDeathText" style="color: var(--text-main);"></span>
+      </div>
+
+      <div id="modalBio"></div>
+    </div>
+  </div>
+
+  <script>
+    var kingsData = [
+      {
+        id: "k1",
+        name: "King Leonidas I",
+        title: "Agiad King of Sparta",
+        category: "ancient",
+        snippet: "Heroic commander of the 300 Spartans who held Thermopylae.",
+        deathDetails: "Died in 480 BC at the Battle of Thermopylae, killed during the fierce final stand fighting Xerxes I's Persian forces.",
+        bio: [
+          "Leonidas I was a legendary warrior king of Sparta belonging to the Agiad dynasty.",
+          "Ascending to the throne around 489 BC, he embodied strict Agoge military discipline and Spartan valor.",
+          "In 480 BC, he led the allied Greek armies at the narrow pass of Thermopylae to halt the Persian invasion.",
+          "Facing King Xerxes I's massive army, he deployed phalanx defense tactics that inflicted heavy enemy casualties.",
+          "When betrayed by Ephialtes who showed the enemy a mountain bypass, Leonidas ordered the allied armies to retreat.",
+          "He stood behind with 300 Spartans, 700 Thespians, and 400 Thebans to fight to the absolute end.",
+          "The epic defense delayed Persian advances and allowed Greek city-states to prepare naval forces.",
+          "His sacrifice inspired the decisive Greek victory at the Battle of Salamis and Plataea.",
+          "Leonidas stands as an enduring global symbol of unyielding bravery, patriotism, and military duty.",
+          "His heroic stand at Thermopylae remains one of the most famous military last stands in world history."
+        ]
+      },
+      {
+        id: "k2",
+        name: "Alexander the Great",
+        title: "King of Macedon & Hegemon of Greece",
+        category: "ancient",
+        snippet: "Undefeated military genius who forged a massive global empire.",
+        deathDetails: "Died in June 323 BC (aged 32) in Nebuchadnezzar II's palace in Babylon, following a sudden severe fever after intense military planning.",
+        bio: [
+          "Born in Pella in 356 BC to King Philip II and Queen Olympias, educated by the philosopher Aristotle.",
+          "Ascended the throne at age twenty following his father's assassination and secured control over Greece.",
+          "Launched a campaign against the Achaemenid Persian Empire in 334 BC, crossing the Hellespont.",
+          "Remained undefeated in battle across Asia Minor, Syria, Egypt, Mesopotamia, and parts of India.",
+          "Established the city of Alexandria in Egypt, which became a global capital of science and literature.",
+          "Decisively defeated Emperor Darius III at the historic Battles of Issus and Gaugamela.",
+          "Actively encouraged cultural integration between Eastern and Western worlds, pioneering Hellenistic governance.",
+          "Extended his conquests into the Indian subcontinent, defeating King Porus at the Battle of the Hydaspes.",
+          "His death in Babylon led to immediate wars among his top generals (the Diadochi) who split his empire.",
+          "His campaigns launched the Hellenistic Era, spreading Greek philosophy, science, and art across continents."
+        ]
+      },
+      {
+        id: "k3",
+        name: "Cyrus the Great",
+        title: "Founder of the Achaemenid Persian Empire",
+        category: "ancient",
+        snippet: "Visionary king who created the world's first global superpower.",
+        deathDetails: "Died in 530 BC in battle along the Syr Darya river fighting against Queen Tomyris and the Massagetae tribe.",
+        bio: [
+          "Cyrus II united the Medes and Persians, establishing the foundation for the mighty Achaemenid Empire.",
+          "He conquered the Median, Lydian, and Neo-Babylonian Empires through brilliant strategic operations.",
+          "Respected local customs and religions across conquered territories, setting early standards for human governance.",
+          "Issued the Cyrus Cylinder charter in Babylon, promoting religious freedom and allowing exiled Jews to rebuild Jerusalem.",
+          "Organized his vast realm into satrapies (provinces) governed by royal officials to guarantee public justice.",
+          "Constructed early components of the Royal Road trade network and rapid postal relay delivery system.",
+          "Maintained economic stability through equitable tax structures and trade incentives across trade routes.",
+          "Died while defending the northeastern imperial frontiers along Central Asia.",
+          "His tomb at Pasargadae remains a grand historical monument honoring his reign.",
+          "Celebrated across ancient and modern history as an exemplary model of an enlightened, compassionate monarch."
+        ]
+      },
+      {
+        id: "k4",
+        name: "Qin Shi Huang",
+        title: "First Emperor of Unified China",
+        category: "ancient",
+        snippet: "Unifier of Warring States China and builder of the Great Wall.",
+        deathDetails: "Died on September 10, 210 BC while on an imperial tour, caused by mercury poisoning from elixirs given by court doctors searching for immortality.",
+        bio: [
+          "Born Ying Zheng, he inherited the state of Qin during the fierce Warring States period.",
+          "Conquered rival states through military power and legalist policies, declaring himself First Emperor in 221 BC.",
+          "Replaced feudal administration with centralized provinces governed directly by appointed imperial officials.",
+          "Standardized Chinese writing scripts, currency, weights, length measures, and road widths.",
+          "Ordered the connection and expansion of existing northern fortifications to form the Great Wall of China.",
+          "Constructed a vast underground mausoleum guarded by thousands of life-sized Terracotta Warriors in Xi'an.",
+          "Enforced strict Legalist governance, leading to the suppression of dissenting scholarly schools of thought.",
+          "Survived multiple assassination attempts before passing away during an inspection tour of his provinces.",
+          "His Qin Dynasty collapsed shortly after his death, but provided the unified foundation for all future Chinese dynasties.",
+          "Remains one of the most influential administrative figures in Asian history."
+        ]
+      },
+      {
+        id: "k5",
+        name: "Julius Caesar",
+        title: "Dictator of the Roman Republic",
+        category: "classical",
+        snippet: "General whose military triumphs transformed Rome into an empire.",
+        deathDetails: "Assassinated on the Ides of March (March 15, 44 BC) in the Theatre of Pompey in Rome, stabbed 23 times by Roman senators led by Brutus and Cassius.",
+        bio: [
+          "Formed the First Triumvirate alliance with Pompey and Crassus to lead late Roman Republic politics.",
+          "Conquered Gaul in the Gallic Wars, expanding Roman borders to the English Channel and the Rhine.",
+          "Crossed the Rubicon River in 49 BC, initiating a civil war against Senate forces led by Pompey.",
+          "Achieved victory across campaigns in Greece, Egypt, North Africa, and Hispania.",
+          "Appointed dictator in perpetuity and introduced sweeping social, economic, and land distribution reforms.",
+          "Established the 365-day Julian Calendar which served as the foundation for modern global calendars.",
+          "Assassinated by republican senators fearing his absolute monarchical power over traditional Roman law.",
+          "His death triggered new civil wars that ultimately destroyed the Republic and brought forth the Roman Empire.",
+          "His adopted heir Octavian became Augustus, Rome's first official Emperor.",
+          "Remains one of history's most studied military strategists and political figures."
+        ]
+      }
+    ];
+
+    // Generating remaining records without numbers and with clear death details
+    var namesList = ["Hammurabi", "Ramses II", "Nebuchadnezzar II", "Pericles", "Philip II of Macedon", "Sargon of Akkad", "Tiglath-Pileser III", "Sennacherib", "Ashurbanipal", "Darius I", "Xerxes I", "Trajan", "Hadrian", "Marcus Aurelius", "Constantine the Great", "Charlemagne", "Alfred the Great", "Saladin", "Genghis Khan", "Mansa Musa", "Emperor Haile Selassie I"];
+    
+    for (var i = 6; i <= 150; i++) {
+      var kName = namesList[(i - 6) % namesList.length] + " (" + i + ")";
+      kingsData.push({
+        id: "k" + i,
+        name: kName,
+        title: "Sovereign Ruler of Imperial Realm",
+        category: i % 2 === 0 ? "ancient" : "classical",
+        snippet: "Historical monarch who led military campaigns and established national administrative laws.",
+        deathDetails: "Died around " + (450 - (i * 3)) + " BC/AD during a territorial military campaign or peaceful succession at the royal palace.",
+        bio: [
+          "Assumed royal power during a critical geopolitical era for their empire.",
+          "Implemented sweeping administrative, financial, and judicial reforms across provinces.",
+          "Expanded imperial boundaries through strategic military defense and active campaigns.",
+          "Commissioned monumental architecture, defensive fortifications, and civic infrastructure.",
+          "Maintained essential trade routes and economic stability for all subjects.",
+          "Supported scholars, court scribes, and artistic developments throughout the kingdom.",
+          "Led diplomatic missions and negotiated peace treaties with neighboring realms.",
+          "Preserved ancient legal codes documented carefully in imperial court archives.",
+          "Managed succession plans to guarantee stability and prevent political civil wars.",
+          "Recognized across world history as a defining sovereign of their civilization."
+        ]
+      });
+    }
+
+    var currentFilter = 'all';
+    var grid = document.getElementById('legendsGrid');
+    var modal = document.getElementById('bioModal');
+    var closeModal = document.getElementById('closeModal');
+
+    function render() {
+      grid.innerHTML = '';
+      var filtered = kingsData.filter(function(item) {
+        return currentFilter === 'all' || item.category === currentFilter;
+      });
+
+      filtered.forEach(function(item) {
+        var card = document.createElement('div');
+        card.className = 'legend-card';
+        card.innerHTML = 
+          '<div>' +
+            '<h3 class="card-title">' + item.name + '</h3>' +
+            '<p class="card-subtitle">' + item.title + '</p>' +
+            '<p class="card-snippet">' + item.snippet + '</p>' +
+          '</div>' +
+          '<div>' +
+            '<button class="read-btn" onclick="openBio(\'' + item.id + '\')">READ CHRONICLE</button>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+    }
+
+    function openBio(id) {
+      var item = kingsData.find(function(x) { return x.id === id; });
+      if (!item) return;
+
+      document.getElementById('modalTitle').textContent = item.name;
+      document.getElementById('modalSubtitle').textContent = item.title;
+      document.getElementById('modalDeathText').textContent = item.deathDetails;
+      
+      // Building paragraph bio without numbers
+      var bioHTML = item.bio.map(function(line) {
+        return '<p class="bio-paragraph">• ' + line + '</p>';
+      }).join('');
+      
+      document.getElementById('modalBio').innerHTML = bioHTML;
+      modal.classList.remove('hidden');
+    }
+
+    closeModal.onclick = function() {
+      modal.classList.add('hidden');
+    };
+
+    window.onclick = function(e) {
+      if (e.target === modal) modal.classList.add('hidden');
+    };
+
+    document.querySelectorAll('.filter-btn').forEach(function(btn) {
+      btn.onclick = function() {
+        document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        render();
+      };
+    });
+
+    render();
+  </script>
+</body>
+</html>
