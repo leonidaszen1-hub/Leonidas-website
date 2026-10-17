@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://leonidaszen1-hub.github.io/Leonidas-website/sitemap.xml
