@@ -225,7 +225,7 @@
 
     <div class="category-tabs">
       <button class="cat-tab active" data-category="kings">👑 150 KINGS & SOVEREIGNS</button>
-      <button class="cat-tab" data-category="leaders">⚔️ 50 HISTORIC LEADERS</button>
+      <button class="cat-tab" data-category="leaders">⚔️ 70 HISTORIC LEADERS</button>
     </div>
 
     <div class="filter-bar" id="filterBarContainer">
@@ -385,24 +385,49 @@
       });
     }
 
-    // 50 Historic Leaders Data
+    // 70 Historic Leaders Data (Including requested figures)
     var leadersData = [];
-    var leaderNames = ["General Belisarius", "Hannibal Barca", "Scipio Africanus", "Spartacus", "Vercingetorix", "Sun Tzu", "Zhuge Liang", "Guan Yu", "Khalid ibn al-Walid", "Tariq ibn Ziyad", "Saladin", "El Cid", "William the Conqueror", "Richard the Lionheart", "Joan of Arc", "Subutai", "Tamerlane", "Hernán Cortés", "Francisco Pizarro", "Oda Nobunaga"];
+    var leaderNames = [
+      "Saddam Hussein", 
+      "Isaias Afwerki", 
+      "Kim Jong Un", 
+      "Ayatollah Ali Khamenei", 
+      "Adolf Hitler", 
+      "General Belisarius", 
+      "Hannibal Barca", 
+      "Scipio Africanus", 
+      "Spartacus", 
+      "Vercingetorix", 
+      "Sun Tzu", 
+      "Zhuge Liang", 
+      "Guan Yu", 
+      "Khalid ibn al-Walid", 
+      "Tariq ibn Ziyad", 
+      "Saladin", 
+      "El Cid", 
+      "William the Conqueror", 
+      "Richard the Lionheart", 
+      "Joan of Arc", 
+      "Subutai", 
+      "Tamerlane", 
+      "Hernán Cortés", 
+      "Francisco Pizarro", 
+      "Oda Nobunaga"
+    ];
     
-    for (var j = 1; j <= 50; j++) {
-      var lName = leaderNames[(j - 1) % leaderNames.length] + " (Leader " + j + ")";
+    for (var j = 1; j <= 70; j++) {
+      var lName = leaderNames[(j - 1) % leaderNames.length] + (j > leaderNames.length ? " (" + j + ")" : "");
       leadersData.push({
         id: "l" + j,
         name: lName,
-        title: "Legendary Military Commander & Strategist",
+        title: "Notable Historical Figure & Commander",
         category: j % 2 === 0 ? "ancient" : "classical",
-        snippet: "Master strategist who commanded armies and changed the course of military history.",
-        deathDetails: "Died in battle or historical campaigns around " + (500 - (j * 5)) + " BC/AD.",
+        snippet: "Prominent figure who played a significant role in modern or historical political and military events.",
+        deathDetails: "Documented historical timeline and tenure.",
         bio: [
-          "Renowned for exceptional tactical brilliance and battlefield leadership.",
-          "Successfully commanded forces in major historical confrontations.",
-          "Introduced innovative military formations and disciplined strategies.",
-          "Honored by historians for unmatched bravery and strategic foresight."
+          "Influenced geopolitical developments and regional governance.",
+          "Subject of extensive historical study, documentation, and global analysis.",
+          "Left a profound and lasting impact on political and military structures."
         ]
       });
     }
