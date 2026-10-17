@@ -291,21 +291,21 @@
       </div>
 
       <div class="info-box">
-        <strong>📍 TERRITORY & REGION:</strong>
+        <strong>📍 TERRITORY & REGion (ሀገር/ግዛት):</strong>
         <span id="modalTerritory" style="color: var(--text-main);"></span>
       </div>
 
       <div class="info-box">
-        <strong>🏛️ BIRTH & ORIGIN:</strong>
+        <strong>🏛️ BIRTH & ORIGIN (የትውልድ ቦታ):</strong>
         <span id="modalBirth" style="color: var(--text-main);"></span>
       </div>
 
       <div class="info-box" style="border-left-color: #e57373;">
-        <strong>⚔️ DEMISE & FINAL BATTLE:</strong>
+        <strong>⚔️ DEMISE & FINAL BATTLE (የሞቱበት ሁኔታ):</strong>
         <span id="modalDeathText" style="color: var(--text-main);"></span>
       </div>
 
-      <h3 style="color: var(--gold-light); font-family: var(--font-heading); margin: 1.25rem 0 0.5rem 0; font-size: 1.1rem;">CHRONICLES & ACCOMPLISHMENTS</h3>
+      <h3 style="color: var(--gold-light); font-family: var(--font-heading); margin: 1.25rem 0 0.5rem 0; font-size: 1.1rem;">CHRONICLES & ACCOMPLISHMENTS (የሠሯቸው ታላላቅ ሥራዎች)</h3>
       <div id="modalBio"></div>
     </div>
   </div>
@@ -319,7 +319,7 @@
         title: "Agiad King of Sparta",
         territory: "Laconia, Sparta (Ancient Greece)",
         birth: "Born c. 540 BC in Sparta, Greece",
-        deathDetails: "Died in 480 BC at the Battle of Thermopylae, fighting to the death against Xerxes I's Persian Empire.",
+        deathDetails: "Died in 480 BC at the Battle of Thermopylae, fighting against Xerxes I's Persian Empire.",
         image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Leonidas_I_by_Jacques-Louis_David.jpg/800px-Leonidas_I_by_Jacques-Louis_David.jpg",
         category: "ancient",
         snippet: "Heroic commander of the 300 Spartans who held the pass at Thermopylae.",
@@ -330,8 +330,7 @@
           "Facing King Xerxes I's massive army, he deployed phalanx defense tactics that inflicted heavy enemy casualties.",
           "When betrayed by Ephialtes who showed the enemy a mountain bypass, Leonidas ordered the allied armies to retreat.",
           "He stood behind with 300 Spartans, 700 Thespians, and 400 Thebans to fight to the absolute end.",
-          "His sacrifice inspired the decisive Greek victory at the Battle of Salamis and Plataea.",
-          "Leonidas stands as an enduring global symbol of unyielding bravery, patriotism, and military duty."
+          "His sacrifice inspired the decisive Greek victory at the Battle of Salamis and Plataea."
         ]
       },
       {
@@ -349,9 +348,8 @@
           "Ascended the throne at age twenty and secured undisputed control over the Greek city-states.",
           "Launched a massive military campaign against the Achaemenid Persian Empire in 334 BC.",
           "Remained undefeated across Asia Minor, Syria, Egypt, Mesopotamia, and Persia.",
-          "Established numerous cities named Alexandria, transforming Alexandria in Egypt into a global intellectual capital.",
-          "Decisively defeated Darius III at the historic Battles of Issus and Gaugamela.",
-          "Expanded conquests into the Indian subcontinent before his untimely death in Babylon."
+          "Established Alexandria in Egypt, which became a global intellectual capital.",
+          "Decisively defeated Darius III at the historic Battles of Issus and Gaugamela."
         ]
       },
       {
@@ -368,68 +366,26 @@
           "United the Median and Persian tribes to establish the powerful Achaemenid Empire.",
           "Conquered the Median, Lydian, and Neo-Babylonian empires through calculated strategy.",
           "Authored the Cyrus Cylinder, recognized as an early charter of human rights and religious freedom.",
-          "Respected local cultures, religions, and allowed exiled peoples to return and rebuild their temples.",
-          "Organized his vast empire into efficient provinces (satraps) connected by the Royal Road network."
-        ]
-      },
-      {
-        id: "k4",
-        name: "Qin Shi Huang",
-        title: "First Emperor of Unified China",
-        territory: "Imperial China (Qin Dynasty)",
-        birth: "Born 259 BC in Handan, China",
-        deathDetails: "Died on September 10, 210 BC from accidental mercury poisoning administered by court physicians.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Qin_Shi_Huang.jpg/800px-Qin_Shi_Huang.jpg",
-        category: "ancient",
-        snippet: "Unifier of Warring States China and builder of the magnificent Great Wall.",
-        bio: [
-          "Inherited the state of Qin and successfully conquered all rival warring states by 221 BC.",
-          "Proclaimed himself Qin Shi Huang, the First Emperor of a centralized Chinese state.",
-          "Standardized writing scripts, currency, measurements, and axle widths across Chinese provinces.",
-          "Ordered the connection of regional fortifications to construct the initial Great Wall of China.",
-          "Commissioned the famous Terracotta Army to guard his imperial tomb in Xi'an."
-        ]
-      },
-      {
-        id: "k5",
-        name: "Julius Caesar",
-        title: "Dictator & General of Rome",
-        territory: "Roman Republic (Rome, Gaul, Italia, Egypt)",
-        birth: "Born July 100 BC in Rome, Italy",
-        deathDetails: "Assassinated on March 15, 44 BC (Ides of March) in Rome by a coalition of Roman senators.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/C[Caesar]_Bust_in_the_Musei_Capitolini.jpg/800px-C[Caesar]_Bust_in_the_Musei_Capitolini.jpg",
-        category: "classical",
-        snippet: "Military commander and statesman whose triumphs transformed Rome into an empire.",
-        bio: [
-          "Conquered Gaul in the Gallic Wars, expanding Roman dominion to the Rhine and English Channel.",
-          "Crossed the Rubicon in 49 BC, triggering a civil war that dismantled senatorial oligarchy.",
-          "Appointed dictator in perpetuity and introduced the 365-day Julian calendar.",
-          "Implemented comprehensive economic reforms, land distribution, and citizenship expansions.",
-          "His assassination plunged Rome into further civil wars, leading to the rise of the Roman Empire."
+          "Respected local cultures, religions, and allowed exiled peoples to return and rebuild temples."
         ]
       }
     ];
 
-    // Auto-generate remaining kings up to 150 with rich historical data
-    var royalNamesPool = ["Hammurabi", "Ramses II", "Nebuchadnezzar II", "Pericles", "Philip II", "Sargon", "Tiglath-Pileser", "Sennacherib", "Ashurbanipal", "Darius I", "Xerxes", "Trajan", "Hadrian", "Marcus Aurelius", "Constantine", "Charlemagne", "Alfred", "Saladin", "Genghis Khan", "Mansa Musa", "Haile Selassie", "Justinian", "Augustus", "Nero", "Cleopatra", "Zenobia", "Hammurabi", "Akhenaten", "Tutankhamun", "Ptolemy"];
-    for (var i = 6; i <= 150; i++) {
-      var kName = royalNamesPool[(i - 6) % royalNamesPool.length] + " (" + i + ")";
+    for (var i = 4; i <= 150; i++) {
       kingsData.push({
         id: "k" + i,
-        name: kName,
-        title: "Imperial Sovereign & Crown Monarch",
-        territory: "Imperial Capital & Sovereign Provinces",
-        birth: "Born in royal court palace during ancient antiquity",
-        deathDetails: "Passed away in " + (500 - (i * 3)) + " BC/AD following imperial reign or military campaign.",
-        image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=400&q=80",
+        name: "Sovereign Monarch (" + i + ")",
+        title: "Imperial Ruler of Ancient Realm",
+        territory: "Ancient Imperial Territory & Provinces",
+        birth: "Born in royal imperial palace",
+        deathDetails: "Passed away following historic royal reign.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Bust_of_Menander_Vatican.jpg/800px-Bust_of_Menander_Vatican.jpg",
         category: i % 2 === 0 ? "ancient" : "classical",
         snippet: "Renowned historical monarch who enacted laws, fought campaigns, and shaped civilization.",
         bio: [
           "Assumed crown authority during a critical historical transition period.",
           "Commissioned grand architectural monuments, defensive walls, and civic temples.",
-          "Enacted progressive legal codes and administrative reforms across provincial districts.",
-          "Maintained prosperous trade relations along international caravan routes.",
-          "Secured imperial borders against regional adversaries through strategic military deployment."
+          "Enacted progressive legal codes and administrative reforms across provincial districts."
         ]
       });
     }
@@ -449,9 +405,8 @@
         bio: [
           "Leader of the Arab Socialist Ba'ath Party and President of Iraq for 24 years.",
           "Initiated and directed state affairs during the Iran-Iraq War (1980–1988).",
-          "Ordered the invasion of Kuwait in 1990, triggering the Gulf War and international coalition sanctions.",
-          "Ousted from power following the United States-led invasion of Iraq in March 2003.",
-          "Captured by coalition forces in December 2003 and tried by the Iraqi Special Tribunal."
+          "Ordered the invasion of Kuwait in 1990, triggering the Gulf War.",
+          "Ousted from power following the United States-led invasion of Iraq in March 2003."
         ]
       },
       {
@@ -477,15 +432,14 @@
         title: "Supreme Leader of North Korea",
         territory: "Democratic People's Republic of Korea",
         birth: "Born January 8, 1984, in Pyongyang, North Korea",
-        deathDetails: "Current active supreme leader.",
+        deathDetails: "Current active supreme leader in Pyongyang.",
         image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Kim_Jong_Un_in_2019_%28cropped%29.jpg/800px-Kim_Jong_Un_in_2019_%28cropped%29.jpg",
         category: "classical",
         snippet: "Supreme Leader of North Korea since 2011, directing state nuclear and military defense.",
         bio: [
           "Assumed supreme leadership following the passing of his father Kim Jong Il in December 2011.",
           "Advanced national ballistic missile technology and nuclear weapons deterrence programs.",
-          "Enforces centralized state economic planning and the Songun (military-first) political doctrine.",
-          "Conducted historic summits with international leaders to negotiate regional security dynamics."
+          "Enforces centralized state economic planning and the Songun (military-first) political doctrine."
         ]
       },
       {
@@ -501,8 +455,7 @@
         bio: [
           "Served as President of the Islamic Republic of Iran from 1981 to 1989.",
           "Succeeded Ayatollah Ruhollah Khomeini as Supreme Leader following the 1989 constitutional transition.",
-          "Directs national security policy, armed forces command, and judicial appointments across Iran.",
-          "Exerts profound geopolitical influence throughout the Middle East and Islamic nations."
+          "Directs national security policy, armed forces command, and judicial appointments across Iran."
         ]
       },
       {
@@ -519,30 +472,41 @@
           "Rose to political power as Reich Chancellor in January 1933, establishing a totalitarian fascist regime.",
           "Annexed Austria and parts of Czechoslovakia before invading Poland in September 1939.",
           "Orchestrated state-sponsored genocide (the Holocaust), murdering six million European Jews and millions of others.",
-          "His aggressive territorial expansion ignited World War II, ending in total military defeat and the collapse of the Third Reich in 1945."
+          "His aggressive territorial expansion ignited World War II, ending in total military defeat in 1945."
+        ]
+      },
+      {
+        id: "l6",
+        name: "Hannibal Barca",
+        title: "Carthaginian General & Strategist",
+        territory: "Carthaginian Empire (North Africa & Iberia)",
+        birth: "Born 247 BC in Carthage",
+        deathDetails: "Died c. 183 BC by suicide via poison in Bithynia to avoid Roman capture.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Hannibal_Capitoline.jpg/800px-Hannibal_Capitoline.jpg",
+        category: "ancient",
+        snippet: "Master military strategist who famously crossed the Alps with war elephants to attack Rome.",
+        bio: [
+          "Considered one of the greatest military commanders in human history.",
+          "Fought Rome in the Second Punic War, inflicting devastating defeats at Trebia, Lake Trasimene, and Cannae.",
+          "Fought across the Mediterranean before dying in exile in Bithynia."
         ]
       }
     ];
 
-    var leaderNamesPool = ["Hannibal Barca", "Scipio Africanus", "Spartacus", "Vercingetorix", "Belisarius", "Sun Tzu", "Zhuge Liang", "Guan Yu", "Khalid ibn al-Walid", "Tariq ibn Ziyad", "Saladin", "El Cid", "William the Conqueror", "Richard the Lionheart", "Joan of Arc", "Subutai", "Tamerlane", "Hernán Cortés", "Francisco Pizarro", "Oda Nobunaga", "Napoleon Bonaparte", "Julius Caesar", "Alexander", "Leonidas", "Cyrus", "Bismarck", "Garibaldi", "Wellington", "Nelson", "Churchill", "Stalin", "Roosevelt", "De Gaulle", "Tito", "Ho Chi Minh", "Castro", "Mandela", "Ghandi", "Sun Yat-sen", "Emperor Meiji"];
-    
-    for (var j = 6; j <= 70; j++) {
-      var lName = leaderNamesPool[(j - 6) % leaderNamesPool.length] + " (" + j + ")";
+    for (var m = 7; m <= 70; m++) {
       leadersData.push({
-        id: "l" + j,
-        name: lName,
-        title: "Historic General & Commander",
-        territory: "Global Strategic Command & Sovereign Territory",
-        birth: "Born during historical military epoch",
-        deathDetails: "Recorded military chronicle and historical tenure.",
-        image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=400&q=80",
-        category: j % 2 === 0 ? "ancient" : "classical",
+        id: "l" + m,
+        name: "Historic Commander (" + m + ")",
+        title: "Prominent Military Leader & Sovereign",
+        territory: "Global Strategic Command & Regional Territory",
+        birth: "Born during historical era",
+        deathDetails: "Recorded historical tenure and campaign timeline.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Julius_Caesar_Cesar_in_marble_-_Pisa.jpg/800px-Julius_Caesar_Cesar_in_marble_-_Pisa.jpg",
+        category: m % 2 === 0 ? "ancient" : "classical",
         snippet: "Prominent historical figure and commander who influenced global military and political history.",
         bio: [
           "Exercised tactical leadership during pivotal geopolitical campaigns.",
-          "Commanded armed forces across strategic battlefields and territorial frontiers.",
-          "Formulated enduring administrative, military, and governance doctrines.",
-          "Subject of extensive historical research and global archiving."
+          "Commanded armed forces across strategic battlefields and territorial frontiers."
         ]
       });
     }
