@@ -138,7 +138,7 @@
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--gold-primary);
-      background: #1e1e24;
+      background: #141418;
       flex-shrink: 0;
     }
 
@@ -202,7 +202,7 @@
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--gold-primary);
-      background: #1e1e24;
+      background: #141418;
       flex-shrink: 0;
     }
 
@@ -298,16 +298,31 @@
   </div>
 
   <script>
-    // SVG Portrait Generator for reliable rendering without external CORS blocks
-    function createAvatarSVG(initials, bgColor) {
-      var svgString = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">' +
-        '<rect width="200" height="200" fill="' + bgColor + '"/>' +
-        '<circle cx="100" cy="75" r="40" fill="#d4af37"/>' +
-        '<path d="M 30 180 Q 100 120 170 180 Z" fill="#d4af37"/>' +
-        '<text x="100" y="88" font-family="Cinzel, serif" font-size="28" font-weight="bold" fill="#0b0b0d" text-anchor="middle">' + initials + '</text>' +
+    // Clean Crown SVG Icon Generator without any text
+    function createCrownSVG() {
+      var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">' +
+        '<rect width="100" height="100" fill="#141418"/>' +
+        '<path d="M20 70 L30 40 L50 55 L70 40 L80 70 Z" fill="#d4af37"/>' +
+        '<rect x="20" y="73" width="60" height="8" fill="#f3e5ab" rx="2"/>' +
+        '<circle cx="30" cy="37" r="4" fill="#f3e5ab"/>' +
+        '<circle cx="50" cy="50" r="4" fill="#f3e5ab"/>' +
+        '<circle cx="70" cy="37" r="4" fill="#f3e5ab"/>' +
         '</svg>';
-      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svgString);
+      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
     }
+
+    // Clean Shield/Sword SVG Icon Generator for leaders
+    function createShieldSVG() {
+      var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">' +
+        '<rect width="100" height="100" fill="#141418"/>' +
+        '<path d="M50 15 L75 25 L75 55 C75 75 50 88 50 88 C50 88 25 75 25 55 L25 25 Z" fill="none" stroke="#d4af37" stroke-width="5"/>' +
+        '<path d="M40 40 L60 60 M60 40 L40 60" stroke="#f3e5ab" stroke-width="5" stroke-linecap="round"/>' +
+        '</svg>';
+      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+    }
+
+    var crownIcon = createCrownSVG();
+    var shieldIcon = createShieldSVG();
 
     var kingsData = [
       {
@@ -317,7 +332,7 @@
         territory: "Laconia, Sparta (Ancient Greece)",
         birth: "Born c. 540 BC in Sparta, Greece",
         deathDetails: "Died in 480 BC at the Battle of Thermopylae, fighting against Xerxes I's Persian Empire.",
-        image: createAvatarSVG("L", "#1a150e"),
+        image: crownIcon,
         category: "kings",
         snippet: "Heroic commander of the 300 Spartans who held the pass at Thermopylae.",
         bio: [
@@ -337,7 +352,7 @@
         territory: "Ancient Imperial Territory & Provinces",
         birth: "Born in royal imperial palace",
         deathDetails: "Passed away following historic royal reign.",
-        image: createAvatarSVG("M" + i, "#14141a"),
+        image: crownIcon,
         category: "kings",
         snippet: "Renowned historical monarch who enacted laws, fought campaigns, and shaped civilization.",
         bio: [
@@ -356,7 +371,7 @@
         territory: "Republic of Iraq (Mesopotamia)",
         birth: "Born April 28, 1937, in Al-Awja, Iraq",
         deathDetails: "Executed by hanging on December 30, 2006, in Kazimain, Baghdad.",
-        image: createAvatarSVG("SH", "#241515"),
+        image: shieldIcon,
         category: "leaders",
         snippet: "Fifth President of Iraq, governing from 1979 until 2003 through nationalist Ba'ath policies.",
         bio: [
@@ -373,7 +388,7 @@
         territory: "State of Eritrea (Horn of Africa)",
         birth: "Born February 2, 1946, in Asmara, Eritrea",
         deathDetails: "Current active political head of state in Asmara.",
-        image: createAvatarSVG("IA", "#152215"),
+        image: shieldIcon,
         category: "leaders",
         snippet: "First President of Eritrea, leading the nation since its official independence in 1993.",
         bio: [
@@ -389,7 +404,7 @@
         territory: "Democratic People's Republic of Korea",
         birth: "Born January 8, 1984, in Pyongyang, North Korea",
         deathDetails: "Current active supreme leader in Pyongyang.",
-        image: createAvatarSVG("KJ", "#151b24"),
+        image: shieldIcon,
         category: "leaders",
         snippet: "Supreme Leader of North Korea since 2011, directing state nuclear and military defense.",
         bio: [
@@ -405,7 +420,7 @@
         territory: "Islamic Republic of Iran (Persia)",
         birth: "Born July 19, 1939, in Mashhad, Iran",
         deathDetails: "Current active supreme leader in Tehran.",
-        image: createAvatarSVG("AK", "#242215"),
+        image: shieldIcon,
         category: "leaders",
         snippet: "Second Supreme Leader of Iran, holding ultimate political and religious authority since 1989.",
         bio: [
@@ -421,7 +436,7 @@
         territory: "Third Reich (Germany & Central Europe)",
         birth: "Born April 20, 1889, in Braunau am Inn, Austria",
         deathDetails: "Committed suicide by gunshot on April 30, 1945, in the Berlin Führerbunker.",
-        image: createAvatarSVG("AH", "#24151a"),
+        image: shieldIcon,
         category: "leaders",
         snippet: "Leader of the Nazi Party who instigated World War II in Europe and the Holocaust.",
         bio: [
@@ -440,7 +455,7 @@
         territory: "Global Strategic Command & Regional Territory",
         birth: "Born during historical era",
         deathDetails: "Recorded historical tenure and campaign timeline.",
-        image: createAvatarSVG("C" + m, "#181820"),
+        image: shieldIcon,
         category: "leaders",
         snippet: "Prominent historical figure and commander who influenced global military and political history.",
         bio: [
