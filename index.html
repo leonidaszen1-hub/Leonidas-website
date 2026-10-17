@@ -62,7 +62,7 @@
     }
 
     .brand { display: flex; align-items: center; gap: 0.75rem; }
-    .crown-logo { font-size: 2rem; }
+    .brand img { width: 50px; height: 50px; object-fit: contain; border-radius: 50%; }
     .site-title { font-family: var(--font-heading); font-size: 1.5rem; color: var(--gold-primary); }
     .site-subtitle { font-size: 0.7rem; color: var(--text-muted); }
 
@@ -207,7 +207,7 @@
   <header class="royal-header">
     <div class="header-container">
       <div class="brand">
-        <img src="logo.jpg" alt="Leonidas Kingdom Logo" style="width: 50px; height: 50px; object-fit: contain; border-radius: 50%;">
+        <img src="logo.jpg" alt="Leonidas Kingdom Logo">
         <div>
           <h1 class="site-title">KINGDOM OF LEGENDS</h1>
           <p class="site-subtitle">THE GRAND ARCHIVES OF HUMAN HISTORY</p>
@@ -228,7 +228,7 @@
       <button class="cat-tab" data-category="leaders">⚔️ 50 HISTORIC LEADERS</button>
     </div>
 
-    <div class="filter-bar">
+    <div class="filter-bar" id="filterBarContainer">
       <button class="filter-btn active" data-filter="all">ALL ERAS</button>
       <button class="filter-btn" data-filter="ancient">ANCIENT</button>
       <button class="filter-btn" data-filter="classical">CLASSICAL</button>
@@ -246,7 +246,6 @@
       <h2 id="modalTitle" style="color:var(--gold-primary); margin-bottom:0.2rem;"></h2>
       <h4 id="modalSubtitle" style="color:var(--text-muted); margin-bottom:0.5rem;"></h4>
       
-      <!-- Death / Final Battle Info Section -->
       <div class="death-info-box">
         <strong>DEATH & FINAL BATTLE / DEMISE:</strong>
         <span id="modalDeathText" style="color: var(--text-main);"></span>
@@ -360,7 +359,6 @@
       }
     ];
 
-    // Generating remaining records without numbers and with clear death details
     var namesList = ["Hammurabi", "Ramses II", "Nebuchadnezzar II", "Pericles", "Philip II of Macedon", "Sargon of Akkad", "Tiglath-Pileser III", "Sennacherib", "Ashurbanipal", "Darius I", "Xerxes I", "Trajan", "Hadrian", "Marcus Aurelius", "Constantine the Great", "Charlemagne", "Alfred the Great", "Saladin", "Genghis Khan", "Mansa Musa", "Emperor Haile Selassie I"];
     
     for (var i = 6; i <= 150; i++) {
@@ -387,6 +385,29 @@
       });
     }
 
+    // 50 Historic Leaders Data
+    var leadersData = [];
+    var leaderNames = ["General Belisarius", "Hannibal Barca", "Scipio Africanus", "Spartacus", "Vercingetorix", "Sun Tzu", "Zhuge Liang", "Guan Yu", "Khalid ibn al-Walid", "Tariq ibn Ziyad", "Saladin", "El Cid", "William the Conqueror", "Richard the Lionheart", "Joan of Arc", "Subutai", "Tamerlane", "Hernán Cortés", "Francisco Pizarro", "Oda Nobunaga"];
+    
+    for (var j = 1; j <= 50; j++) {
+      var lName = leaderNames[(j - 1) % leaderNames.length] + " (Leader " + j + ")";
+      leadersData.push({
+        id: "l" + j,
+        name: lName,
+        title: "Legendary Military Commander & Strategist",
+        category: j % 2 === 0 ? "ancient" : "classical",
+        snippet: "Master strategist who commanded armies and changed the course of military history.",
+        deathDetails: "Died in battle or historical campaigns around " + (500 - (j * 5)) + " BC/AD.",
+        bio: [
+          "Renowned for exceptional tactical brilliance and battlefield leadership.",
+          "Successfully commanded forces in major historical confrontations.",
+          "Introduced innovative military formations and disciplined strategies.",
+          "Honored by historians for unmatched bravery and strategic foresight."
+        ]
+      });
+    }
+
+    var currentTab = 'kings';
     var currentFilter = 'all';
     var grid = document.getElementById('legendsGrid');
     var modal = document.getElementById('bioModal');
@@ -394,7 +415,9 @@
 
     function render() {
       grid.innerHTML = '';
-      var filtered = kingsData.filter(function(item) {
+      var activeDataset = (currentTab === 'kings') ? kingsData : leadersData;
+      
+      var filtered = activeDataset.filter(function(item) {
         return currentFilter === 'all' || item.category === currentFilter;
       });
 
@@ -415,14 +438,14 @@
     }
 
     function openBio(id) {
-      var item = kingsData.find(function(x) { return x.id === id; });
+      var activeDataset = (currentTab === 'kings') ? kingsData : leadersData;
+      var item = activeDataset.find(function(x) { return x.id === id; });
       if (!item) return;
 
       document.getElementById('modalTitle').textContent = item.name;
       document.getElementById('modalSubtitle').textContent = item.title;
       document.getElementById('modalDeathText').textContent = item.deathDetails;
       
-      // Building paragraph bio without numbers
       var bioHTML = item.bio.map(function(line) {
         return '<p class="bio-paragraph">• ' + line + '</p>';
       }).join('');
@@ -439,6 +462,17 @@
       if (e.target === modal) modal.classList.add('hidden');
     };
 
+    // Tab switching (Kings vs Leaders)
+    document.querySelectorAll('.cat-tab').forEach(function(tab) {
+      tab.onclick = function() {
+        document.querySelectorAll('.cat-tab').forEach(function(t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        currentTab = tab.dataset.category;
+        render();
+      };
+    });
+
+    // Filter switching (All, Ancient, Classical)
     document.querySelectorAll('.filter-btn').forEach(function(btn) {
       btn.onclick = function() {
         document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -447,6 +481,31 @@
         render();
       };
     });
+
+    // Search functionality
+    document.getElementById('searchInput').oninput = function(e) {
+      var query = e.target.value.toLowerCase();
+      var activeDataset = (currentTab === 'kings') ? kingsData : leadersData;
+      var filtered = activeDataset.filter(function(item) {
+        return item.name.toLowerCase().includes(query) || item.title.toLowerCase().includes(query);
+      });
+      
+      grid.innerHTML = '';
+      filtered.forEach(function(item) {
+        var card = document.createElement('div');
+        card.className = 'legend-card';
+        card.innerHTML = 
+          '<div>' +
+            '<h3 class="card-title">' + item.name + '</h3>' +
+            '<p class="card-subtitle">' + item.title + '</p>' +
+            '<p class="card-snippet">' + item.snippet + '</p>' +
+          '</div>' +
+          '<div>' +
+            '<button class="read-btn" onclick="openBio(\'' + item.id + '\')">READ CHRONICLE</button>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+    };
 
     render();
   </script>
