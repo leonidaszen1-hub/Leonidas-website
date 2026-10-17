@@ -298,32 +298,6 @@
   </div>
 
   <script>
-    // Clean Crown SVG Icon Generator without any text
-    function createCrownSVG() {
-      var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">' +
-        '<rect width="100" height="100" fill="#141418"/>' +
-        '<path d="M20 70 L30 40 L50 55 L70 40 L80 70 Z" fill="#d4af37"/>' +
-        '<rect x="20" y="73" width="60" height="8" fill="#f3e5ab" rx="2"/>' +
-        '<circle cx="30" cy="37" r="4" fill="#f3e5ab"/>' +
-        '<circle cx="50" cy="50" r="4" fill="#f3e5ab"/>' +
-        '<circle cx="70" cy="37" r="4" fill="#f3e5ab"/>' +
-        '</svg>';
-      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
-    }
-
-    // Clean Shield/Sword SVG Icon Generator for leaders
-    function createShieldSVG() {
-      var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">' +
-        '<rect width="100" height="100" fill="#141418"/>' +
-        '<path d="M50 15 L75 25 L75 55 C75 75 50 88 50 88 C50 88 25 75 25 55 L25 25 Z" fill="none" stroke="#d4af37" stroke-width="5"/>' +
-        '<path d="M40 40 L60 60 M60 40 L40 60" stroke="#f3e5ab" stroke-width="5" stroke-linecap="round"/>' +
-        '</svg>';
-      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
-    }
-
-    var crownIcon = createCrownSVG();
-    var shieldIcon = createShieldSVG();
-
     var kingsData = [
       {
         id: "k1",
@@ -332,7 +306,7 @@
         territory: "Laconia, Sparta (Ancient Greece)",
         birth: "Born c. 540 BC in Sparta, Greece",
         deathDetails: "Died in 480 BC at the Battle of Thermopylae, fighting against Xerxes I's Persian Empire.",
-        image: crownIcon,
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Leonidas_I_by_Jacques-Louis_David.jpg/800px-Leonidas_I_by_Jacques-Louis_David.jpg",
         category: "kings",
         snippet: "Heroic commander of the 300 Spartans who held the pass at Thermopylae.",
         bio: [
@@ -352,7 +326,7 @@
         territory: "Ancient Imperial Territory & Provinces",
         birth: "Born in royal imperial palace",
         deathDetails: "Passed away following historic royal reign.",
-        image: crownIcon,
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Bust_of_Menander_Vatican.jpg/800px-Bust_of_Menander_Vatican.jpg",
         category: "kings",
         snippet: "Renowned historical monarch who enacted laws, fought campaigns, and shaped civilization.",
         bio: [
@@ -371,7 +345,7 @@
         territory: "Republic of Iraq (Mesopotamia)",
         birth: "Born April 28, 1937, in Al-Awja, Iraq",
         deathDetails: "Executed by hanging on December 30, 2006, in Kazimain, Baghdad.",
-        image: shieldIcon,
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Saddam_Hussein_profile_%28cropped%29.jpg/800px-Saddam_Hussein_profile_%28cropped%29.jpg",
         category: "leaders",
         snippet: "Fifth President of Iraq, governing from 1979 until 2003 through nationalist Ba'ath policies.",
         bio: [
@@ -388,7 +362,7 @@
         territory: "State of Eritrea (Horn of Africa)",
         birth: "Born February 2, 1946, in Asmara, Eritrea",
         deathDetails: "Current active political head of state in Asmara.",
-        image: shieldIcon,
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Isaias_Afwerki_2018.jpg/800px-Isaias_Afwerki_2018.jpg",
         category: "leaders",
         snippet: "First President of Eritrea, leading the nation since its official independence in 1993.",
         bio: [
@@ -404,7 +378,7 @@
         territory: "Democratic People's Republic of Korea",
         birth: "Born January 8, 1984, in Pyongyang, North Korea",
         deathDetails: "Current active supreme leader in Pyongyang.",
-        image: shieldIcon,
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Kim_Jong_Un_in_2019_%28cropped%29.jpg/800px-Kim_Jong_Un_in_2019_%28cropped%29.jpg",
         category: "leaders",
         snippet: "Supreme Leader of North Korea since 2011, directing state nuclear and military defense.",
         bio: [
@@ -420,7 +394,7 @@
         territory: "Islamic Republic of Iran (Persia)",
         birth: "Born July 19, 1939, in Mashhad, Iran",
         deathDetails: "Current active supreme leader in Tehran.",
-        image: shieldIcon,
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ali_Khamenei_in_meeting_with_Russian_President_Vladimir_Putin_%28cropped%29.jpg/800px-Ali_Khamenei_in_meeting_with_Russian_President_Vladimir_Putin_%28cropped%29.jpg",
         category: "leaders",
         snippet: "Second Supreme Leader of Iran, holding ultimate political and religious authority since 1989.",
         bio: [
@@ -436,7 +410,7 @@
         territory: "Third Reich (Germany & Central Europe)",
         birth: "Born April 20, 1889, in Braunau am Inn, Austria",
         deathDetails: "Committed suicide by gunshot on April 30, 1945, in the Berlin Führerbunker.",
-        image: shieldIcon,
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Adolf_Hitler_by_Heinrich_Hoffmann_%28cropped%29.jpg/800px-Adolf_Hitler_by_Heinrich_Hoffmann_%28cropped%29.jpg",
         category: "leaders",
         snippet: "Leader of the Nazi Party who instigated World War II in Europe and the Holocaust.",
         bio: [
@@ -455,7 +429,7 @@
         territory: "Global Strategic Command & Regional Territory",
         birth: "Born during historical era",
         deathDetails: "Recorded historical tenure and campaign timeline.",
-        image: shieldIcon,
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Julius_Caesar_Cesar_in_marble_-_Pisa.jpg/800px-Julius_Caesar_Cesar_in_marble_-_Pisa.jpg",
         category: "leaders",
         snippet: "Prominent historical figure and commander who influenced global military and political history.",
         bio: [
