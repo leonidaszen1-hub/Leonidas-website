@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KINGDOM OF LEGENDS — The Grand Archives of Human History</title>
-  <meta name="google-site-verification" content="Q0XjYj7PFdE5aJ_patghTNz-UOGAyVq4bj7-Wt5Hxe0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -14,16 +13,11 @@
       --bg-primary: #0b0b0d;
       --bg-secondary: #121217;
       --bg-card: #181820;
-      
       --gold-primary: #d4af37;
       --gold-light: #f3e5ab;
-      --gold-glow: rgba(212, 175, 55, 0.25);
-
       --text-main: #e6e6eb;
       --text-muted: #a0a0b0;
       --border-gold: rgba(212, 175, 55, 0.3);
-      --border-subtle: rgba(255, 255, 255, 0.08);
-
       --font-heading: 'Cinzel', serif;
       --font-body: 'Cormorant Garamond', Georgia, serif;
     }
@@ -41,7 +35,6 @@
       flex-direction: column;
     }
 
-    /* HEADER */
     .royal-header {
       background: rgba(11, 11, 13, 0.95);
       border-bottom: 1px solid var(--border-gold);
@@ -68,7 +61,7 @@
 
     .search-box input {
       background: var(--bg-secondary);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid rgba(255,255,255,0.1);
       color: var(--text-main);
       padding: 0.5rem 1rem;
       border-radius: 20px;
@@ -76,7 +69,6 @@
       width: 250px;
     }
 
-    /* HERO */
     .hero-section {
       text-align: center;
       padding: 2.5rem 1.5rem 1.5rem;
@@ -86,7 +78,7 @@
     .hero-title span { color: var(--gold-primary); }
     .hero-description { max-width: 750px; margin: 0 auto 1.5rem; color: var(--text-muted); }
 
-    .category-tabs, .filter-bar {
+    .category-tabs {
       display: flex;
       justify-content: center;
       gap: 0.5rem;
@@ -94,7 +86,7 @@
       flex-wrap: wrap;
     }
 
-    .cat-tab, .filter-btn {
+    .cat-tab {
       background: var(--bg-secondary);
       border: 1px solid var(--border-gold);
       color: var(--gold-light);
@@ -103,13 +95,12 @@
       cursor: pointer;
     }
 
-    .cat-tab.active, .filter-btn.active {
+    .cat-tab.active {
       background: var(--gold-primary);
       color: #000;
       font-weight: bold;
     }
 
-    /* GRID */
     .main-container {
       max-width: 1280px;
       margin: 0 auto;
@@ -146,8 +137,9 @@
       height: 65px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1px solid var(--gold-primary);
+      border: 2px solid var(--gold-primary);
       background: #111;
+      flex-shrink: 0;
     }
 
     .card-title { font-family: var(--font-heading); font-size: 1.15rem; color: #fff; }
@@ -171,7 +163,6 @@
       color: #000;
     }
 
-    /* MODAL STYLES */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -201,7 +192,7 @@
       gap: 1.25rem;
       align-items: center;
       margin-bottom: 1rem;
-      border-bottom: 1px solid var(--border-subtle);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       padding-bottom: 1rem;
     }
 
@@ -211,6 +202,7 @@
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--gold-primary);
+      flex-shrink: 0;
     }
 
     .info-box {
@@ -259,17 +251,11 @@
 
   <section class="hero-section">
     <h2 class="hero-title">ENSEMBLE OF <span>GLOBAL HERITAGE</span></h2>
-    <p class="hero-description">Comprehensive archives of 150 Sovereigns and 70 Historic Leaders with biographies, territories, and portraits.</p>
+    <p class="hero-description">Comprehensive archives of Sovereigns and Historic Leaders with biographies, territories, and portraits.</p>
 
     <div class="category-tabs">
-      <button class="cat-tab active" data-category="kings">👑 150 KINGS & SOVEREIGNS</button>
-      <button class="cat-tab" data-category="leaders">⚔️ 70 HISTORIC LEADERS</button>
-    </div>
-
-    <div class="filter-bar" id="filterBarContainer">
-      <button class="filter-btn active" data-filter="all">ALL ERAS</button>
-      <button class="filter-btn" data-filter="ancient">ANCIENT</button>
-      <button class="filter-btn" data-filter="classical">CLASSICAL</button>
+      <button class="cat-tab active" data-category="kings">👑 KINGS & SOVEREIGNS (150)</button>
+      <button class="cat-tab" data-category="leaders">⚔️ HISTORIC LEADERS (70)</button>
     </div>
   </section>
 
@@ -291,7 +277,7 @@
       </div>
 
       <div class="info-box">
-        <strong>📍 TERRITORY & REGion (ሀገር/ግዛት):</strong>
+        <strong>📍 TERRITORY & REGION (ሀገር/ግዛት):</strong>
         <span id="modalTerritory" style="color: var(--text-main);"></span>
       </div>
 
@@ -311,7 +297,6 @@
   </div>
 
   <script>
-    // 150 KINGS & SOVEREIGNS
     var kingsData = [
       {
         id: "k1",
@@ -320,16 +305,13 @@
         territory: "Laconia, Sparta (Ancient Greece)",
         birth: "Born c. 540 BC in Sparta, Greece",
         deathDetails: "Died in 480 BC at the Battle of Thermopylae, fighting against Xerxes I's Persian Empire.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Leonidas_I_by_Jacques-Louis_David.jpg/800px-Leonidas_I_by_Jacques-Louis_David.jpg",
-        category: "ancient",
+        image: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=400&q=80",
+        category: "kings",
         snippet: "Heroic commander of the 300 Spartans who held the pass at Thermopylae.",
         bio: [
           "Leonidas I was a legendary warrior king of Sparta belonging to the Agiad dynasty.",
           "Ascending to the throne around 489 BC, he embodied strict Agoge military discipline and Spartan valor.",
           "In 480 BC, he led the allied Greek armies at the narrow pass of Thermopylae to halt the Persian invasion.",
-          "Facing King Xerxes I's massive army, he deployed phalanx defense tactics that inflicted heavy enemy casualties.",
-          "When betrayed by Ephialtes who showed the enemy a mountain bypass, Leonidas ordered the allied armies to retreat.",
-          "He stood behind with 300 Spartans, 700 Thespians, and 400 Thebans to fight to the absolute end.",
           "His sacrifice inspired the decisive Greek victory at the Battle of Salamis and Plataea."
         ]
       },
@@ -337,41 +319,21 @@
         id: "k2",
         name: "Alexander the Great",
         title: "King of Macedon & Hegemon of Greece",
-        territory: "Macedonia, Greece, Persia, Egypt, to Northwestern India",
+        territory: "Macedonia, Greece, Persia, Egypt, to India",
         birth: "Born July 356 BC in Pella, Macedonia",
         deathDetails: "Died in June 323 BC in Babylon from a sudden severe fever at age 32.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Alexander_the_Great_mosaic.jpg/800px-Alexander_the_Great_mosaic.jpg",
-        category: "ancient",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80",
+        category: "kings",
         snippet: "Undefeated military genius who forged one of the largest empires in history.",
         bio: [
-          "Born to King Philip II and Queen Olympias, educated by the Greek philosopher Aristotle.",
-          "Ascended the throne at age twenty and secured undisputed control over the Greek city-states.",
+          "Educated by the Greek philosopher Aristotle and ascended the throne at age twenty.",
           "Launched a massive military campaign against the Achaemenid Persian Empire in 334 BC.",
-          "Remained undefeated across Asia Minor, Syria, Egypt, Mesopotamia, and Persia.",
-          "Established Alexandria in Egypt, which became a global intellectual capital.",
-          "Decisively defeated Darius III at the historic Battles of Issus and Gaugamela."
-        ]
-      },
-      {
-        id: "k3",
-        name: "Cyrus the Great",
-        title: "Founder of the Achaemenid Persian Empire",
-        territory: "Ancient Persia, Media, Lydia, and Mesopotamia",
-        birth: "Born c. 600 BC in Anshan, Persia",
-        deathDetails: "Died in 530 BC during a military campaign along the Syr Darya river against the Massagetae.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Cyrus_the_Great_portrait.jpg/640px-Cyrus_the_Great_portrait.jpg",
-        category: "ancient",
-        snippet: "Visionary monarch who created the world's first multi-national superpower.",
-        bio: [
-          "United the Median and Persian tribes to establish the powerful Achaemenid Empire.",
-          "Conquered the Median, Lydian, and Neo-Babylonian empires through calculated strategy.",
-          "Authored the Cyrus Cylinder, recognized as an early charter of human rights and religious freedom.",
-          "Respected local cultures, religions, and allowed exiled peoples to return and rebuild temples."
+          "Remained undefeated across Asia Minor, Syria, Egypt, Mesopotamia, and Persia."
         ]
       }
     ];
 
-    for (var i = 4; i <= 150; i++) {
+    for (var i = 3; i <= 150; i++) {
       kingsData.push({
         id: "k" + i,
         name: "Sovereign Monarch (" + i + ")",
@@ -379,8 +341,8 @@
         territory: "Ancient Imperial Territory & Provinces",
         birth: "Born in royal imperial palace",
         deathDetails: "Passed away following historic royal reign.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Bust_of_Menander_Vatican.jpg/800px-Bust_of_Menander_Vatican.jpg",
-        category: i % 2 === 0 ? "ancient" : "classical",
+        image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=400&q=80",
+        category: "kings",
         snippet: "Renowned historical monarch who enacted laws, fought campaigns, and shaped civilization.",
         bio: [
           "Assumed crown authority during a critical historical transition period.",
@@ -390,7 +352,6 @@
       });
     }
 
-    // 70 HISTORIC LEADERS (Including Saddam, Isaias, Kim Jong Un, Khamenei, Hitler + 65 others)
     var leadersData = [
       {
         id: "l1",
@@ -399,8 +360,8 @@
         territory: "Republic of Iraq (Mesopotamia)",
         birth: "Born April 28, 1937, in Al-Awja, Iraq",
         deathDetails: "Executed by hanging on December 30, 2006, in Kazimain, Baghdad.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Saddam_Hussein_profile_%28cropped%29.jpg/800px-Saddam_Hussein_profile_%28cropped%29.jpg",
-        category: "classical",
+        image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80",
+        category: "leaders",
         snippet: "Fifth President of Iraq, governing from 1979 until 2003 through nationalist Ba'ath policies.",
         bio: [
           "Leader of the Arab Socialist Ba'ath Party and President of Iraq for 24 years.",
@@ -416,14 +377,13 @@
         territory: "State of Eritrea (Horn of Africa)",
         birth: "Born February 2, 1946, in Asmara, Eritrea",
         deathDetails: "Current active political head of state in Asmara.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Isaias_Afwerki_2018.jpg/800px-Isaias_Afwerki_2018.jpg",
-        category: "classical",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+        category: "leaders",
         snippet: "First President of Eritrea, leading the nation since its official independence in 1993.",
         bio: [
           "Prominent leader of the Eritrean liberation movement and secretary-general of the EPLF.",
           "Commanded armed resistance during the decades-long Eritrean War of Independence.",
-          "Achieved formal international recognition and independence for Eritrea following the 1993 referendum.",
-          "Directs national governance, state development initiatives, and regional foreign policy in the Horn of Africa."
+          "Achieved formal international recognition and independence for Eritrea following the 1993 referendum."
         ]
       },
       {
@@ -433,8 +393,8 @@
         territory: "Democratic People's Republic of Korea",
         birth: "Born January 8, 1984, in Pyongyang, North Korea",
         deathDetails: "Current active supreme leader in Pyongyang.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Kim_Jong_Un_in_2019_%28cropped%29.jpg/800px-Kim_Jong_Un_in_2019_%28cropped%29.jpg",
-        category: "classical",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+        category: "leaders",
         snippet: "Supreme Leader of North Korea since 2011, directing state nuclear and military defense.",
         bio: [
           "Assumed supreme leadership following the passing of his father Kim Jong Il in December 2011.",
@@ -449,8 +409,8 @@
         territory: "Islamic Republic of Iran (Persia)",
         birth: "Born July 19, 1939, in Mashhad, Iran",
         deathDetails: "Current active supreme leader in Tehran.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ali_Khamenei_in_meeting_with_Russian_President_Vladimir_Putin_%28cropped%29.jpg/800px-Ali_Khamenei_in_meeting_with_Russian_President_Vladimir_Putin_%28cropped%29.jpg",
-        category: "classical",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
+        category: "leaders",
         snippet: "Second Supreme Leader of Iran, holding ultimate political and religious authority since 1989.",
         bio: [
           "Served as President of the Islamic Republic of Iran from 1981 to 1989.",
@@ -465,35 +425,18 @@
         territory: "Third Reich (Germany & Central Europe)",
         birth: "Born April 20, 1889, in Braunau am Inn, Austria",
         deathDetails: "Committed suicide by gunshot on April 30, 1945, in the Berlin Führerbunker.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Adolf_Hitler_by_Heinrich_Hoffmann_%28cropped%29.jpg/800px-Adolf_Hitler_by_Heinrich_Hoffmann_%28cropped%29.jpg",
-        category: "classical",
+        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80",
+        category: "leaders",
         snippet: "Leader of the Nazi Party who instigated World War II in Europe and the Holocaust.",
         bio: [
           "Rose to political power as Reich Chancellor in January 1933, establishing a totalitarian fascist regime.",
           "Annexed Austria and parts of Czechoslovakia before invading Poland in September 1939.",
-          "Orchestrated state-sponsored genocide (the Holocaust), murdering six million European Jews and millions of others.",
-          "His aggressive territorial expansion ignited World War II, ending in total military defeat in 1945."
-        ]
-      },
-      {
-        id: "l6",
-        name: "Hannibal Barca",
-        title: "Carthaginian General & Strategist",
-        territory: "Carthaginian Empire (North Africa & Iberia)",
-        birth: "Born 247 BC in Carthage",
-        deathDetails: "Died c. 183 BC by suicide via poison in Bithynia to avoid Roman capture.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Hannibal_Capitoline.jpg/800px-Hannibal_Capitoline.jpg",
-        category: "ancient",
-        snippet: "Master military strategist who famously crossed the Alps with war elephants to attack Rome.",
-        bio: [
-          "Considered one of the greatest military commanders in human history.",
-          "Fought Rome in the Second Punic War, inflicting devastating defeats at Trebia, Lake Trasimene, and Cannae.",
-          "Fought across the Mediterranean before dying in exile in Bithynia."
+          "Orchestrated state-sponsored genocide (the Holocaust), murdering six million European Jews and millions of others."
         ]
       }
     ];
 
-    for (var m = 7; m <= 70; m++) {
+    for (var m = 6; m <= 70; m++) {
       leadersData.push({
         id: "l" + m,
         name: "Historic Commander (" + m + ")",
@@ -501,8 +444,8 @@
         territory: "Global Strategic Command & Regional Territory",
         birth: "Born during historical era",
         deathDetails: "Recorded historical tenure and campaign timeline.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Julius_Caesar_Cesar_in_marble_-_Pisa.jpg/800px-Julius_Caesar_Cesar_in_marble_-_Pisa.jpg",
-        category: m % 2 === 0 ? "ancient" : "classical",
+        image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=400&q=80",
+        category: "leaders",
         snippet: "Prominent historical figure and commander who influenced global military and political history.",
         bio: [
           "Exercised tactical leadership during pivotal geopolitical campaigns.",
@@ -512,7 +455,6 @@
     }
 
     var currentTab = 'kings';
-    var currentFilter = 'all';
     var grid = document.getElementById('legendsGrid');
     var modal = document.getElementById('bioModal');
     var closeModal = document.getElementById('closeModal');
@@ -520,12 +462,8 @@
     function render() {
       grid.innerHTML = '';
       var activeDataset = (currentTab === 'kings') ? kingsData : leadersData;
-      
-      var filtered = activeDataset.filter(function(item) {
-        return currentFilter === 'all' || item.category === currentFilter;
-      });
 
-      filtered.forEach(function(item) {
+      activeDataset.forEach(function(item) {
         var card = document.createElement('div');
         card.className = 'legend-card';
         card.innerHTML = 
@@ -576,7 +514,6 @@
       if (e.target === modal) modal.classList.add('hidden');
     };
 
-    // Tab switching
     document.querySelectorAll('.cat-tab').forEach(function(tab) {
       tab.onclick = function() {
         document.querySelectorAll('.cat-tab').forEach(function(t) { t.classList.remove('active'); });
@@ -586,17 +523,6 @@
       };
     });
 
-    // Filter switching
-    document.querySelectorAll('.filter-btn').forEach(function(btn) {
-      btn.onclick = function() {
-        document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        currentFilter = btn.dataset.filter;
-        render();
-      };
-    });
-
-    // Search functionality
     document.getElementById('searchInput').oninput = function(e) {
       var query = e.target.value.toLowerCase();
       var activeDataset = (currentTab === 'kings') ? kingsData : leadersData;
